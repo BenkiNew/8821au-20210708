@@ -1,6 +1,6 @@
 # Журнал змін цього форку
 
-Формат: [Keep a Changelog](https://keepachangelog.com/uk-UA/1.0.0/). Кожен
+Формат: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). Кожен
 запис — наша власна зміна поверх `morrownr/8821au-20210708`, з посиланням
 на upstream PR (якщо подавався) і датою.
 
