@@ -30,3 +30,4 @@
   upstream: [morrownr#210](https://github.com/morrownr/8821au-20210708/pull/210) — **влито**
 - Регресія збірки на ядрах < 7.1, внесена попереднім фіксом.
   upstream: [morrownr#211](https://github.com/morrownr/8821au-20210708/pull/211) — **влито**
+test: automatic Actions trigger after re-enabling (2026-09-30 14:20:54)
