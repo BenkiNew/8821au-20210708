@@ -12,7 +12,9 @@ kernel-ml 7.x). Upstream-мейнтейнер `@morrownr` офіційно ві�
   успадкована без змін. Наші власні зміни поширюються на тих самих умовах.
 - **GitHub Actions:** увімкнено, збірка й перевірки запускаються на кожен
   push у `main` цього форку та на кожен PR.
-- **Питання/PR:** [issues цього форку](https://github.com/BenkiNew/8821au-20210708/issues).
+- **Питання/PR:** [issues цього форку](https://github.com/BenkiNew/8821au-20210708/issues) — для багів і PR.
+- **Питання по використанню:** [Discussions → Q&A](https://github.com/BenkiNew/8821au-20210708/discussions/categories/q-a) —
+  встановлення, ядра, 5 ГГц/DFS, поради. Якщо відповідь допомогла, позначте її прийнятою.
 
 ---
 
