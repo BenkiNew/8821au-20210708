@@ -20,7 +20,18 @@ jobs:
   markdown-link-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: gaurav-nelson/github-action-markdown-link-check@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          config-file: .github/markdown-link-check-config.json
+          node-version: '22'
+      - name: Check links with bounded retries
+        run: |
+          npm install --prefix "$RUNNER_TEMP/link-check" markdown-link-check@3.15.0
+          checker="$RUNNER_TEMP/link-check/node_modules/.bin/markdown-link-check"
+          for attempt in 1 2 3; do
+            if find . -name '*.md' -not -path './.git/*' -print0 | xargs -0 -n1 "$checker" -c .github/markdown-link-check-config.json; then
+              exit 0
+            fi
+            if [ "$attempt" -lt 3 ]; then sleep 15; fi
+          done
+          exit 1

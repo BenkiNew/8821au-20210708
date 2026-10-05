@@ -1,0 +1,36 @@
+name: Repository activity monitor
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 7 * * *'
+permissions:
+  contents: read
+  issues: read
+  actions: read
+concurrency:
+  group: repository-activity-monitor
+  cancel-in-progress: false
+jobs:
+  snapshot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore previous successful snapshot
+        env:
+          GH_REPO: ${{ github.repository }}
+        run: |
+          mkdir -p activity
+          previous=$(gh run list --workflow activity-monitor.yml --status success --limit 1 --json databaseId --jq '.[0].databaseId // empty')
+          if [ -n "$previous" ]; then
+            gh run download "$previous" --name repository-activity --dir activity
+          fi
+      - name: Capture engagement and daily change
+        run: python3 scripts/activity_snapshot.py --output activity
+      - uses: actions/upload-artifact@v4
+        with:
+          name: repository-activity
+          path: activity/
+          retention-days: 90

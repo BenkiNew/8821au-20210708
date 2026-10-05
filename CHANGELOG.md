@@ -6,6 +6,16 @@
 
 ## [Unreleased]
 
+### Added — 2026-10-05
+- English maintainer introduction, dated validation matrix, contribution guide
+  and bug/hardware report templates.
+- Compile-only kernel compatibility CI for 7.0, 7.1 and 7.2.8.
+- Daily aggregate repository engagement snapshots with previous-run comparison.
+
+### Changed — 2026-10-05
+- Link checks retry transient server errors rather than accepting them as valid.
+
+
 ### Змінено — 2026-10-02
 - README: додано посилання на Discussions → Q&A для питань по використанню
   (issues лишаються для багів і PR).
