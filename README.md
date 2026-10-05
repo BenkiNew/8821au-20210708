@@ -13,6 +13,7 @@ driver is better for every adapter or distribution.
 - [Changes](CHANGELOG.md) and [validation matrix](docs/VALIDATION.md)
 - [Report a bug](https://github.com/BenkiNew/8821au-20210708/issues)
 - [Installation questions](https://github.com/BenkiNew/8821au-20210708/discussions/categories/q-a)
+- [Support](SUPPORT.md) / [Security reports](SECURITY.md)
 - [Adoption monitoring](docs/ACTIVITY.md)
 - [Contributing](CONTRIBUTING.md) / [Українською](docs/README.uk.md)
 
