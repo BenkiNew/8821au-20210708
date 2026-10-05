@@ -11,6 +11,7 @@ driver is better for every adapter or distribution.
 
 - [Latest release](https://github.com/BenkiNew/8821au-20210708/releases/latest)
 - [Changes](CHANGELOG.md) and [validation matrix](docs/VALIDATION.md)
+- [Help test other platforms and stability](https://github.com/BenkiNew/8821au-20210708/issues/5)
 - [Report a bug](https://github.com/BenkiNew/8821au-20210708/issues)
 - [Installation questions](https://github.com/BenkiNew/8821au-20210708/discussions/categories/q-a)
 - [Support](SUPPORT.md) / [Security reports](SECURITY.md)
@@ -31,6 +32,9 @@ TP-Link Archer T2U Plus і Linux 7.x. Ми продовжуємо роботу �
 Якщо вбудований драйвер **rtw88** задовольняє ваші потреби, використовуйте
 його. Цей форк призначений для випадків, коли досі потрібен legacy-драйвер.
 Успішна збірка не означає перевірку всіх адаптерів і режимів роботи.
+
+Перевіряли драйвер на іншому дистрибутиві чи адаптері?
+[Поділіться результатами тестування](https://github.com/BenkiNew/8821au-20210708/issues/5).
 
 [Український вступ](docs/README.uk.md) · [Історія змін](CHANGELOG.md) ·
 [Релізи](https://github.com/BenkiNew/8821au-20210708/releases) ·
