@@ -34,8 +34,25 @@ metadata = api(f'repos/{repo}')
 issues = items(f'repos/{repo}/issues?state=all')
 external = [x for x in issues if x['user']['login'].lower() != owner.lower()
             and x['user']['type'] != 'Bot']
+discussion_count = 0
+cursor = None
+while True:
+    query = 'query($cursor:String){repository(owner:"BenkiNew",name:"8821au-20210708"){discussions(first:100,after:$cursor){nodes{author{login __typename}} pageInfo{hasNextPage endCursor}}}}'
+    command = ['gh', 'api', 'graphql', '-f', 'query=' + query]
+    if cursor:
+        command += ['-f', 'cursor=' + cursor]
+    data = json.loads(subprocess.check_output(command, text=True))
+    if data.get('errors'):
+        raise RuntimeError('Discussion API failed')
+    discussions = data['data']['repository']['discussions']
+    discussion_count += sum(bool(x['author']) and x['author']['login'].lower() != owner.lower()
+                            and x['author']['__typename'] != 'Bot' for x in discussions['nodes'])
+    if not discussions['pageInfo']['hasNextPage']:
+        break
+    cursor = discussions['pageInfo']['endCursor']
 releases = items(f'repos/{repo}/releases?')
 metrics = {
+    'external_discussions_total': discussion_count,
     'stars': metadata['stargazers_count'],
     'forks': metadata['forks_count'],
     'external_issues_total': sum('pull_request' not in x for x in external),
@@ -50,7 +67,7 @@ if args.traffic:
 args.output.mkdir(parents=True, exist_ok=True)
 previous_path = args.output / 'snapshot.json'
 previous = json.loads(previous_path.read_text()) if previous_path.exists() else None
-snapshot['delta'] = {k: v - previous['metrics'][k] for k, v in metrics.items()} if previous else None
+snapshot['delta'] = {k: v - previous['metrics'][k] if k in previous['metrics'] else None for k, v in metrics.items()} if previous else None
 snapshot['previous_capture'] = previous['captured_at'] if previous else None
 with (args.output / 'history.jsonl').open('a') as handle:
     handle.write(json.dumps(snapshot) + '\n')

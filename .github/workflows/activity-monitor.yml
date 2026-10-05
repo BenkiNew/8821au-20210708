@@ -6,6 +6,7 @@ on:
 permissions:
   contents: read
   issues: read
+  discussions: read
   actions: read
 concurrency:
   group: repository-activity-monitor
