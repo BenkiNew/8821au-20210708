@@ -34,6 +34,12 @@ metadata = api(f'repos/{repo}')
 issues = items(f'repos/{repo}/issues?state=all')
 external = [x for x in issues if x['user']['login'].lower() != owner.lower()
             and x['user']['type'] != 'Bot']
+external_comments = 0
+for issue in issues:
+    if issue['comments']:
+        comments = items(f"repos/{repo}/issues/{issue['number']}/comments?")
+        external_comments += sum(x['user']['login'].lower() != owner.lower()
+                                 and x['user']['type'] != 'Bot' for x in comments)
 discussion_count = 0
 cursor = None
 while True:
@@ -53,6 +59,7 @@ while True:
 releases = items(f'repos/{repo}/releases?')
 metrics = {
     'external_discussions_total': discussion_count,
+    'external_issue_pr_comments_total': external_comments,
     'stars': metadata['stargazers_count'],
     'forks': metadata['forks_count'],
     'external_issues_total': sum('pull_request' not in x for x in external),

@@ -3,7 +3,7 @@
 [Repository activity monitor](https://github.com/BenkiNew/8821au-20210708/actions/workflows/activity-monitor.yml)
 runs daily at 07:20 UTC and can be started manually. Each successful run stores
 an aggregate snapshot and a readable report for 90 days. Its summary compares
-stars, forks, external issues/PRs/Discussions and release asset downloads with the preceding
+stars, forks, external issues/PRs/Discussions, their issue/PR comments, and release asset downloads with the preceding
 successful run. No contributor identities are stored in the artifact.
 
 The first run establishes a baseline. Compare results after 7 and 30 days.
