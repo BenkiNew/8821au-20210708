@@ -20,6 +20,21 @@ The inherited GPLv2 license and original attribution are preserved. Fixes are
 maintained here and submitted upstream where appropriate. Build success means
 compile compatibility; hardware behavior requires a separate test report.
 
+## Коротко українською
+
+**BenkiNew** підтримує цей форк драйвера RTL8821AU / RTL8811AU для
+TP-Link Archer T2U Plus і Linux 7.x. Ми продовжуємо роботу над сумісністю
+з ядрами після припинення регулярних API-оновлень upstream, додаємо
+виправлення та перевіряємо їх збіркою й окремими тестами на обладнанні.
+
+Якщо вбудований драйвер **rtw88** задовольняє ваші потреби, використовуйте
+його. Цей форк призначений для випадків, коли досі потрібен legacy-драйвер.
+Успішна збірка не означає перевірку всіх адаптерів і режимів роботи.
+
+[Український вступ](docs/README.uk.md) · [Історія змін](CHANGELOG.md) ·
+[Релізи](https://github.com/BenkiNew/8821au-20210708/releases) ·
+[Звіти про проблеми](https://github.com/BenkiNew/8821au-20210708/issues)
+
 ## 8821au ( 8821au.ko ) :rocket:
 
 ## Linux Driver for USB WiFi Adapters that are based on the RTL8811AU and RTL8821AU Chipsets
