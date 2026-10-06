@@ -18,7 +18,7 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Restore previous successful snapshot
         env:
           GH_REPO: ${{ github.repository }}
@@ -30,7 +30,7 @@ jobs:
           fi
       - name: Capture engagement and daily change
         run: python3 scripts/activity_snapshot.py --output activity
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: repository-activity
           path: activity/
