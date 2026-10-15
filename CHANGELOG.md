@@ -6,6 +6,13 @@
 
 ## [Unreleased]
 
+### Змінено — 2026-10-15
+- Економію енергії вимкнено за замовчуванням: у `Makefile` `CONFIG_IPS_MODE = 0`,
+  `CONFIG_LPS_MODE = 0` (тобто `rtw_ips_mode=IPS_NONE`, `rtw_power_mgnt=PS_MODE_ACTIVE`),
+  у `8821au.conf` — `rtw_power_mgnt=0 rtw_ips_mode=0`. Причина: на 5 ГГц USB-адаптері
+  максимальний power-save давав втрати/розриви лінка (інцидент primary 15.10.2026).
+  Повернути типові значення: `CONFIG_IPS_MODE = default`, `CONFIG_LPS_MODE = default`.
+
 ### Added — 2026-10-05
 - English maintainer introduction, dated validation matrix, contribution guide
   and bug/hardware report templates.
