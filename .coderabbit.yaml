@@ -6,6 +6,9 @@
 language: en-US
 
 reviews:
+  # 28.10.2026: без перехресних посилань між репозиторіями (приватні PR не повинні лінкуватись на публічні й навпаки)
+  related_issues: false
+  related_prs: false
   auto_review:
     # By default automatic review pauses after 5 reviewed commits of a PR.
     auto_pause_after_reviewed_commits: 0
@@ -13,6 +16,8 @@ reviews:
   path_instructions:
     - path: "**"
       instructions: |
+        - Never name, link or quote private repositories, their issues, pull requests or internal tools in this public
+          repository, and never add cross-repository references. Flag any such line.
         - No personal or network-identifying data in code, docs, logs or issue templates: MAC addresses,
           SSIDs, serial numbers, public IPs, usernames, home paths. Flag any such line.
         - Hardware and bug reports state facts first. Do not attribute a fault (kernel, driver, DHCP
@@ -37,3 +42,14 @@ reviews:
       instructions: |
         - Statements about supported kernels, distributions and devices must match what has been tested.
           Mark anything untested as untested.
+
+# 28.10.2026: типове scope=auto означає «глобально по акаунту» для приватних репозиторіїв, тому приватні PR бачили публічні й лінкувались на них.
+# Лише локальний контекст репозиторію; автоматичного зв'язування репозиторіїв немає.
+knowledge_base:
+  learnings:
+    scope: local
+  issues:
+    scope: local
+  pull_requests:
+    scope: local
+  automatic_linking_mode: disabled
