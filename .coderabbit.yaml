@@ -1,0 +1,39 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+#
+# CodeRabbit only reviews: closing threads, merging and board cards stay with the maintainer.
+# This is a public fork of morrownr/8821au-20210708 (RTL8811AU/RTL8821AU Linux driver), so reviews
+# are in English, like the issues and the upstream project.
+language: en-US
+
+reviews:
+  auto_review:
+    # By default automatic review pauses after 5 reviewed commits of a PR.
+    auto_pause_after_reviewed_commits: 0
+
+  path_instructions:
+    - path: "**"
+      instructions: |
+        - No personal or network-identifying data in code, docs, logs or issue templates: MAC addresses,
+          SSIDs, serial numbers, public IPs, usernames, home paths. Flag any such line.
+        - Hardware and bug reports state facts first. Do not attribute a fault (kernel, driver, DHCP
+          client, router) unless it has been isolated with a control run; say what is not known.
+        - Keep diffs minimal: this is a fork that tracks upstream, so avoid reformatting or unrelated
+          cleanups next to a functional change.
+
+    - path: "{core,hal,os_dep,platform,include}/**"
+      instructions: |
+        - This is Linux kernel module code (C). Flag kernel-version-dependent API use that is not guarded
+          for the supported kernel range, unchecked allocations and copies, missing cleanup on error
+          paths, lock-order or sleeping-in-atomic problems, and unbounded buffers.
+        - A functional change needs a test note: adapter, kernel version, distribution, architecture and
+          what was actually observed. Do not claim a fix that was not reproduced and re-tested.
+
+    - path: "**/*.sh"
+      instructions: |
+        - These scripts run with root privileges (install, DKMS, remove). Flag unquoted variables,
+          destructive commands without a guard or confirmation, and assumptions about the distribution.
+
+    - path: "{docs/**,README.md,FAQ.md,CHANGELOG.md,SUPPORT.md}"
+      instructions: |
+        - Statements about supported kernels, distributions and devices must match what has been tested.
+          Mark anything untested as untested.
